@@ -6,9 +6,9 @@ import logoImg from './assets/Logo.svg'
 function App() {
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
-      <img src={logoImg} alt="" />
+      <img src={logoImg} alt="" className='w-80' />
 
-      <h1 className="text-6xl text-white font-black">
+      <h1 className="text-6xl text-white font-black mt-8">
         Seu <span className="text-transparent bg-nlw-gradient bg-clip-text"> duo </span> esta aqui.
       </h1>
 
