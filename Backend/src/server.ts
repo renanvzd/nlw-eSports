@@ -1,10 +1,16 @@
 import express from 'express';
+import cors from 'cors';
+
 import { PrismaClient } from '@prisma/client'
 import { convertHourStringToMinutes } from './utils/convertHourStringToMinutes';
 import { convertMinutesToHourString } from './utils/convertMinutesToHourString';
 
 const app = express()
 app.use(express.json())
+app.use(cors()) // Quando alterar pra producao, identificar o dominio para proteger o backend
+// app.use(cors({
+//   origin: 'http://dominio.com.br'       // Somente esse dominio podera fazer requisicao ao backend
+// }))
 
 const prisma = new PrismaClient({
   log: ['query']
