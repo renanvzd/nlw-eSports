@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import logoImg from '../../assets/logo-nlw-esports.png';
 import { Background } from '../../components/Background';
-import { GameCard } from '../../components/GameCard';
+import { GameCard, GameCardProps } from '../../components/GameCard';
 import { Heading } from '../../components/Heading';
 
 import { styles } from './styles';
@@ -24,8 +24,8 @@ export function Home() {
   const [games, setGames] = useState<Game[]>([])
 
   const navigation = useNavigation();
-  function handleOpenGame() {
-    navigation.navigate('game')
+  function handleOpenGame({ id, title, bannerUrl }: GameCardProps) {
+    navigation.navigate('game', { id, title, bannerUrl })
   }
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export function Home() {
           renderItem={({ item }) => (
             <GameCard
               data={item}
-              onPress={handleOpenGame}
+              onPress={() => handleOpenGame(item)}
             />
           )}
           showsHorizontalScrollIndicator={false}
